@@ -26,7 +26,7 @@ function isGitRepo(directory: string): boolean {
 
 // Package manager detection is delegated to `package-manager-detector`.
 
-async function runShadcnAdd(manager: SupportedPackageManager, forwardedArgs: readonly string[]): Promise<number> {
+async function runShadcnVueAdd(manager: SupportedPackageManager, forwardedArgs: readonly string[]): Promise<number> {
   // Map to the correct runner
   let command: string;
   let args: string[];
@@ -34,24 +34,24 @@ async function runShadcnAdd(manager: SupportedPackageManager, forwardedArgs: rea
   switch (manager) {
     case "pnpm":
       command = "pnpm";
-      args = ["dlx", "shadcn@latest", "add", ...forwardedArgs];
+      args = ["dlx", "shadcn-vue@latest", "add", ...forwardedArgs];
       break;
     case "npm":
       command = "npx";
-      args = ["shadcn@latest", "add", ...forwardedArgs];
+      args = ["shadcn-vue@latest", "add", ...forwardedArgs];
       break;
     case "yarn":
       command = "yarn";
-      args = ["shadcn@latest", "add", ...forwardedArgs];
+      args = ["shadcn-vue@latest", "add", ...forwardedArgs];
       break;
     case "bun":
       command = "bunx";
-      args = ["--bun", "shadcn@latest", "add", ...forwardedArgs];
+      args = ["--bun", "shadcn-vue@latest", "add", ...forwardedArgs];
       break;
     case "deno":
       command = "deno";
-      // Use npm specifier to execute the shadcn CLI from npm registry
-      args = ["run", "-A", "npm:shadcn@latest", "add", ...forwardedArgs];
+      // Use npm specifier to execute the shadcn-vue CLI from npm registry
+      args = ["run", "-A", "npm:shadcn-vue@latest", "add", ...forwardedArgs];
       break;
     default:
       // Should be unreachable due to type
@@ -69,7 +69,7 @@ function getCwd(): string {
 }
 
 async function main(): Promise<void> {
-  // Forward all args after the binary name. If user typed `shadd add ...`,
+  // Forward all args after the binary name. If user typed `tweakcn add ...`,
   // drop the leading `add` so we don't end up duplicating it.
   const rawArgs = process.argv.slice(2);
   const forwarded = rawArgs.length > 0 && rawArgs[0] === "add" ? rawArgs.slice(1) : rawArgs;
@@ -78,7 +78,7 @@ async function main(): Promise<void> {
 
   if (!withinRepo) {
     console.error(
-      "Error: Not inside an active git repository. Run this inside a repository with shadcn initialized (see https://ui.shadcn.com/docs/cli#init)."
+      "Error: Not inside an active git repository. Run this inside a repository with shadcn-vue initialized (see https://www.shadcn-vue.com/docs/cli.html#init)."
     );
     process.exit(1);
     return;
@@ -94,7 +94,7 @@ async function main(): Promise<void> {
     return;
   }
 
-  const exitCode = await runShadcnAdd(manager, forwarded);
+  const exitCode = await runShadcnVueAdd(manager, forwarded);
   process.exit(exitCode);
 }
 
@@ -104,5 +104,3 @@ main().catch((error: unknown) => {
   console.error("Unexpected error:", message);
   process.exit(1);
 });
-
-

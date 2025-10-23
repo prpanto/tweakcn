@@ -1,34 +1,33 @@
 {
-  "name": "shadd",
-  "version": "1.0.4",
-  "description": "Installable global alias/shorthand of `npx shadcn add` that works with all package managers via auto-detection",
+  "name": "tweakcn",
+  "version": "1.0.0",
+  "description": "Installable global alias/shorthand of `npx shadcn-vue add` that works with all package managers via auto-detection",
   "type": "module",
-  "author": "Brandon McConnell",
+  "author": "Prodromos Pantos",
   "license": "MIT",
-  "homepage": "https://github.com/brandonmcconnell/shadd#readme",
+  "homepage": "https://github.com/prpanto/tweakcn#readme",
   "bugs": {
-    "url": "https://github.com/brandonmcconnell/shadd/issues"
+    "url": "https://github.com/prpanto/tweakcn/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/brandonmcconnell/shadd.git"
+    "url": "git+https://github.com/prpanto/tweakcn.git"
   },
   "keywords": [
-    "components",
     "shadcn",
+    "shadcn-vue",
+    "components",
     "registry",
     "vercel",
-    "react",
-    "nextjs",
-    "next",
-    "reactjs",
-    "shadcn-ui",
-    "shadcnui",
-    "radix",
-    "radix-ui"
+    "vue",
+    "vuejs",
+    "nuxt",
+    "nuxtjs",
+    "reka",
+    "reka-ui"
   ],
   "bin": {
-    "shadd": "dist/index.js"
+    "tweakcn": "dist/index.js"
   },
   "files": [
     "dist"
@@ -45,11 +44,11 @@
     "node": ">=18.17.0"
   },
   "dependencies": {
-    "package-manager-detector": "^1.3.0"
+    "package-manager-detector": "^1.5.0"
   },
   "devDependencies": {
-    "@types/node": "^22.7.5",
-    "tsdown": "^0.14.2",
-    "typescript": "^5.6.2"
+    "@types/node": "^24.9.1",
+    "tsdown": "^0.15.9",
+    "typescript": "^5.9.3"
   }
 }
